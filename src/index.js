@@ -2,12 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { Provider } from 'mobx-react';
 import * as serviceWorker from './serviceWorker';
+import CounterStore from './store/CounterStore';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+
+const Root = (<Provider CounterStore = {CounterStore}>
+  <App />
+</Provider>);
+
+ReactDOM.render(Root,
+  // <React.StrictMode>
+  //   <App />
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 
