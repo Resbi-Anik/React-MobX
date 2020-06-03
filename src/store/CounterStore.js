@@ -1,20 +1,31 @@
-import { observable, action, computed } from "mobx";
+import { observable, action, computed, decorate } from "mobx";
 
 class CounterStore {
-  @observable count = null;
+//   @observable 
+  count = null;
 
-  @action increment = () => {
+//   @action 
+  increment = () => {
     this.count = this.count + 1;
   };
 
-  @action reduceValue = () => {
+//   @action 
+  reduceValue = () => {
     this.count = this.count - 1;
   };
 
-  @computed get counterValue() {
+//   @computed 
+  get counterValue() {
     return this.count;
   }
 }
+
+decorate(CounterStore, {
+    count: observable,
+    increment: action,
+    reduceValue: action,
+    counterValue :computed
+})
 
 const store = new CounterStore();
 
